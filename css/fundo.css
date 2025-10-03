@@ -7,7 +7,7 @@ body, html {
 
 body {
   /* Onde você coloca o link da sua imagem */
-  background-image: url('../img/background.avif');
+  background-image: url('img/background.avif');
 
   /* Garante que a imagem cubra toda a tela */
   background-size: cover;
@@ -28,4 +28,5 @@ body {
   margin: 50px;
   padding: 20px;
   border-radius: 10px;
+
 }
