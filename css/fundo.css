@@ -1,0 +1,31 @@
+body, html {
+  height: 100%; /* Garante que o corpo da página ocupe toda a altura */
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif; /* Uma fonte básica para o texto */
+}
+
+body {
+  /* Onde você coloca o link da sua imagem */
+  background-image: url('../img/background.avif');
+
+  /* Garante que a imagem cubra toda a tela */
+  background-size: cover;
+
+  /* Evita que a imagem se repita */
+  background-repeat: no-repeat;
+
+  /* Centraliza a imagem */
+  background-position: center center;
+
+  /* Deixa a imagem de fundo fixa durante o scroll */
+  background-attachment: fixed;
+}
+
+/* Estilo opcional para o conteúdo ficar mais legível */
+.conteudo {
+  background-color: rgba(255, 255, 255, 0.8); /* Fundo branco com 80% de opacidade */
+  margin: 50px;
+  padding: 20px;
+  border-radius: 10px;
+}
