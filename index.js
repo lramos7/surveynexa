@@ -6,7 +6,7 @@ survey.onComplete.add((sender, options) => {
     console.log("Dados do formulário:", sender.data); // Opcional: mantém o log para debug
 
     // Envia os resultados para a sua nova API de backend
-    fetch('https://api.cortix.info/api/post', {
+    fetch('https://api.cortix.info/post', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json;charset=UTF-8'
