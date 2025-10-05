@@ -55,76 +55,73 @@ const json = {
           },
           "choices": [
             {
-              "value": "Item 1",
-              "text": {
-                "default": "RH",
+              "value": "Comercial",
+              "text": {                
                 "pt-br": "Comercial"
               }
             },
             {
-              "value": "Item 2",
-              "text": {
-                "default": "PMO",
+              "value": "Delivery Infrastruture Platform (DIP)",
+              "text": {                
                 "pt-br": "Delivery Infrastruture Platform (DIP)"
               }
             },
             {
-              "value": "Item 3",
-              "text": {
-                "default": "Comercial",
+              "value": "Field Service",
+              "text": {                
                 "pt-br": "Field Service"
               }
             },
             {
-              "value": "Item 4",
+              "value": "Financeiro",
               "text": {
                 "pt-br": "Financeiro"
               }
             },
             {
-              "value": "Item 5",
+              "value": "Governança ITSMO",
               "text": {
                 "pt-br": "Governança ITSMO"
               }
             },
             {
-              "value": "Item 6",
+              "value": "Managed Service Cisco",
               "text": {
                 "pt-br": "Managed Service Cisco"
               }
             },
             {
-              "value": "Item 7",
+              "value": "PMO",
               "text": {
                 "pt-br": "PMO"
               }
             },
             {
-              "value": "Item 8",
+              "value": "Qualidade",
               "text": {
                 "pt-br": "Qualidade"
               }
             },
             {
-              "value": "Item 9",
+              "value": "RH",
               "text": {
                 "pt-br": "RH"
               }
             },
             {
-              "value": "Item 10",
+              "value": "Service Desk",
               "text": {
                 "pt-br": "Service Desk"
               }
             },
             {
-              "value": "Item 11",
+              "value": "Smart Center",
               "text": {
                 "pt-br": "Smart Center"
               }
             },
             {
-              "value": "Item 12",
+              "value": "Suporte Especializado",
               "text": {
                 "pt-br": "Suporte Especializado"
               }
