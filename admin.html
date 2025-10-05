@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Cadastrar Nova Pesquisa</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 40px auto; padding: 20px; background-color: #f4f4f4; }
+        h1 { color: #111; }
+        form { background: #fff; padding: 25px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        label { display: block; margin-bottom: 8px; font-weight: bold; }
+        input[type="text"], textarea { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; margin-bottom: 15px; }
+        small { display: block; margin-top: -10px; margin-bottom: 15px; color: #666; }
+        button { background-color: #007bff; color: white; padding: 12px 20px; border: none; border-radius: 4px; cursor: pointer; width: 100%; font-size: 16px; }
+        button:hover { background-color: #0056b3; }
+        #message { margin-top: 20px; padding: 15px; border-radius: 4px; display: none; }
+        .success { background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+        .error { background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+    </style>
+</head>
+<body>
+
+    <h1>Cadastrar Nova Pesquisa</h1>
+    <form id="surveyForm">
+        <div>
+            <label for="identificador">Identificador Único</label>
+            <input type="text" id="identificador" name="identificador" required pattern="^[a-z0-9-]+$" placeholder="ex: nexa-atendimento-v2">
+            <small>Apenas letras minúsculas, números e hífens. Sem espaços ou acentos. Será usado na URL e no código.</small>
+        </div>
+        <div>
+            <label for="titulo">Título da Pesquisa</label>
+            <input type="text" id="titulo" name="titulo" required placeholder="ex: Pesquisa de Atendimento Nexa V2">
+            <small>O nome amigável que aparecerá em relatórios.</small>
+        </div>
+        <div>
+            <label for="descricao">Descrição (Opcional)</label>
+            <textarea id="descricao" name="descricao" rows="3"></textarea>
+        </div>
+        <button type="submit">Cadastrar Pesquisa</button>
+    </form>
+
+    <div id="message"></div>
+
+    <script>
+        document.getElementById('surveyForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Impede o recarregamento da página
+
+            // --- Camada Simples de Segurança ---
+            // Pede uma senha antes de enviar. É simples, mas impede o acesso casual.
+            const password = prompt("Por favor, digite a senha de administrador:");
+            if (!password) {
+                return; // Usuário cancelou
+            }
+
+            const messageDiv = document.getElementById('message');
+            messageDiv.style.display = 'none';
+
+            const formData = {
+                identificador_unico: document.getElementById('identificador').value,
+                titulo: document.getElementById('titulo').value,
+                descricao: document.getElementById('descricao').value,
+                senha: password // Envia a senha para o backend verificar
+            };
+
+            // Envia os dados para o novo endpoint no backend
+            fetch('https://api.cortix.info/api/pesquisas', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            })
+            .then(response => {
+                if (!response.ok) {
+                    // Tenta ler a mensagem de erro do backend
+                    return response.json().then(err => {
+                        throw new Error(err.detail || 'Ocorreu um erro no servidor.');
+                    });
+                }
+                return response.json();
+            })
+            .then(data => {
+                messageDiv.className = 'success';
+                messageDiv.textContent = `Sucesso! Pesquisa cadastrada com ID: ${data.id}. Identificador: '${data.identificador_unico}'`;
+                messageDiv.style.display = 'block';
+                document.getElementById('surveyForm').reset(); // Limpa o formulário
+            })
+            .catch(error => {
+                messageDiv.className = 'error';
+                messageDiv.textContent = 'Erro: ' + error.message;
+                messageDiv.style.display = 'block';
+            });
+        });
+    </script>
+</body>
+</html>
