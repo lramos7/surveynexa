@@ -1,11 +1,9 @@
 const survey = new Survey.Model(json);
 survey.applyTheme(themeJson);
 
-// ESTA É A PARTE QUE PRECISAMOS MUDAR
 survey.onComplete.add((sender, options) => {
     console.log("Dados do formulário:", sender.data); // Opcional: mantém o log para debug
 
-    // Envia os resultados para a sua nova API de backend
     fetch('https://api.cortix.info/post', {
         method: 'POST',
         headers: {
