@@ -4,7 +4,9 @@ survey.applyTheme(themeJson);
 survey.onComplete.add((sender, options) => {
     console.log("Dados do formulário:", sender.data); // Opcional: mantém o log para debug
 
-    fetch('https://api.cortix.info/post', {
+    const powerAutomateUrl = "https://7d907c52becee61eb1b77b0be0ea01.e6.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/7c793a3cafe647aa8279b76388538262/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=uSj4xtnXF6rFZfUJqhaappAOcc1Z2QcBIeiSjxFAioQ";
+
+    fetch(powerAutomateUrl, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json;charset=UTF-8'
