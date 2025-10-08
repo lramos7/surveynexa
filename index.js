@@ -15,7 +15,7 @@ const msalConfig = {
 };
 
 const msalInstance = new msal.PublicClientApplication(msalConfig);
-msalInstance.initialize();
+//msalInstance.initialize();
 
 // URL do seu fluxo do Power Automate
 const powerAutomateUrl = "https://7d907c52becee61eb1b77b0be0ea01.e6.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/7c793a3cafe647aa8279b76388538262/triggers/manual/paths/invoke?api-version=1";
